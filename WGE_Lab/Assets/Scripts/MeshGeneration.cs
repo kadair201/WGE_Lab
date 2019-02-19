@@ -9,7 +9,8 @@ public class MeshGeneration : MonoBehaviour
     MeshCollider meshCollider;
     List<Vector3> vertexList;
     List<int> triIndexList;
-    List<Vector2> UVList;
+    List<Vector2> UVList;
+
     int numQuads = 0;
 
     // Start is called before the first frame update
@@ -23,7 +24,11 @@ public class MeshGeneration : MonoBehaviour
         CreateQuad(1, 1, new Vector2(0, 0.5f));
         CreateQuad(2, 1, new Vector2(0.5f, 0.5f));
         mesh.vertices = vertexList.ToArray();
-        mesh.triangles = triIndexList.ToArray();        mesh.uv = UVList.ToArray();        mesh.RecalculateNormals();        meshCollider.sharedMesh = mesh;
+        mesh.triangles = triIndexList.ToArray();
+        mesh.uv = UVList.ToArray();
+        mesh.RecalculateNormals();
+        meshCollider.sharedMesh = mesh;
+
     }
 
     // Update is called once per frame
