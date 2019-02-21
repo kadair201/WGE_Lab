@@ -92,7 +92,8 @@ public class VoxelGenerator : MonoBehaviour
         UVList.Add(new Vector2(uvCoords.x + 0.5f, uvCoords.y + 0.5f));
         UVList.Add(new Vector2(uvCoords.x + 0.5f, uvCoords.y));
         UVList.Add(new Vector2(uvCoords.x, uvCoords.y));
-    }
+    }
+
     void CreatePositiveZFace(int x, int y, int z, Vector2 uvCoords)
     {
         vertexList.Add(new Vector3(x + 1, y, z + 1));
@@ -163,4 +164,5 @@ public class VoxelGenerator : MonoBehaviour
             // List counts are not matching
             Debug.Log("texNames and texCoords count mismatch");
         }
-    }}
+    }
+}
