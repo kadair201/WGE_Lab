@@ -18,14 +18,28 @@ public class VoxelGenerator : MonoBehaviour
 
     void Start()
     {
+        Initialise();
+        UpdateMesh();   
+    }
+
+    void Initialise()
+    {
         mesh = GetComponent<MeshFilter>().mesh;
         meshCollider = GetComponent<MeshCollider>();
         vertexList = new List<Vector3>();
         triIndexList = new List<int>();
         UVList = new List<Vector2>();
         CreateTextureNameCoordDictionary();
-        CreateVoxel(0, 0, 0, new Vector2(0, 0));
+        CreateVoxel(0, 0, 0, texNameCoordDictionary["Grass"]);
+        CreateVoxel(1, 0, 0, texNameCoordDictionary["Grass"]);
+        CreateVoxel(2, 0, 0, texNameCoordDictionary["Grass"]);
+        CreateVoxel(3, 0, 0, texNameCoordDictionary["Grass"]);
+        CreateVoxel(4, 0, 0, texNameCoordDictionary["Grass"]);
+        CreateVoxel(5, 0, 0, texNameCoordDictionary["Grass"]);
+    }
 
+    void UpdateMesh()
+    {
         // Convert index list to array and store in mesh
         mesh.vertices = vertexList.ToArray();
         // Convert index list to array and store in mesh
@@ -36,11 +50,6 @@ public class VoxelGenerator : MonoBehaviour
         // Create a collision mesh
         meshCollider.sharedMesh = null;
         meshCollider.sharedMesh = mesh;
-    }
-
-    void Update()
-    {
-
     }
 
     void CreateVoxel(int x, int y, int z, Vector2 uvCoords)
@@ -126,10 +135,10 @@ public class VoxelGenerator : MonoBehaviour
 
     void CreateNegativeYFace(int x, int y, int z, Vector2 uvCoords)
     {
-        vertexList.Add(new Vector3(x, y, z + 1));
-        vertexList.Add(new Vector3(x + 1, y, z + 1));
-        vertexList.Add(new Vector3(x + 1, y, z));
         vertexList.Add(new Vector3(x, y, z));
+        vertexList.Add(new Vector3(x + 1, y, z));
+        vertexList.Add(new Vector3(x + 1, y, z + 1));
+        vertexList.Add(new Vector3(x, y, z + 1));
         AddTriangleIndices();
         AddUVCoords(uvCoords);
     }
@@ -155,8 +164,7 @@ public class VoxelGenerator : MonoBehaviour
             for (int i = 0; i < texNames.Count; i++)
             {
                 // Add the pairing to the dictionary
-                texNameCoordDictionary.Add(texNames[i],
-                texCoords[i]);
+                texNameCoordDictionary.Add(texNames[i],texCoords[i]);
             }
         }
         else
