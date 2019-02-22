@@ -16,13 +16,7 @@ public class VoxelGenerator : MonoBehaviour
     public float texSize;
     Dictionary<string, Vector2> texNameCoordDictionary;
 
-    void Start()
-    {
-        Initialise();
-        UpdateMesh();   
-    }
-
-    void Initialise()
+    public void Initialise()
     {
         mesh = GetComponent<MeshFilter>().mesh;
         meshCollider = GetComponent<MeshCollider>();
@@ -30,15 +24,17 @@ public class VoxelGenerator : MonoBehaviour
         triIndexList = new List<int>();
         UVList = new List<Vector2>();
         CreateTextureNameCoordDictionary();
-        CreateVoxel(0, 0, 0, texNameCoordDictionary["Grass"]);
+        CreateVoxel(0, 0, 0, texNameCoordDictionary["Dirt"]);
         CreateVoxel(1, 0, 0, texNameCoordDictionary["Grass"]);
         CreateVoxel(2, 0, 0, texNameCoordDictionary["Grass"]);
         CreateVoxel(3, 0, 0, texNameCoordDictionary["Grass"]);
-        CreateVoxel(4, 0, 0, texNameCoordDictionary["Grass"]);
-        CreateVoxel(5, 0, 0, texNameCoordDictionary["Grass"]);
+        CreateVoxel(3, 0, 1, texNameCoordDictionary["Grass"]);
+        CreateVoxel(3, 0, 2, texNameCoordDictionary["Grass"]);
+        CreateVoxel(4, 0, 2, texNameCoordDictionary["Grass"]);
+        CreateVoxel(4, 0, 3, texNameCoordDictionary["Dirt"]);
     }
 
-    void UpdateMesh()
+    public void UpdateMesh()
     {
         // Convert index list to array and store in mesh
         mesh.vertices = vertexList.ToArray();
@@ -52,7 +48,7 @@ public class VoxelGenerator : MonoBehaviour
         meshCollider.sharedMesh = mesh;
     }
 
-    void CreateVoxel(int x, int y, int z, Vector2 uvCoords)
+    public void CreateVoxel(int x, int y, int z, Vector2 uvCoords)
     {
         CreateNegativeXFace(x, y, z, uvCoords);
         CreatePositiveXFace(x, y, z, uvCoords);
@@ -62,7 +58,7 @@ public class VoxelGenerator : MonoBehaviour
         CreatePositiveZFace(x, y, z, uvCoords);
     }
 
-    void CreateVoxel(int x, int y, int z, string texture)
+    public void CreateVoxel(int x, int y, int z, string texture)
     {
         Vector2 uvCoords = texNameCoordDictionary[texture];
         CreateNegativeXFace(x, y, z, uvCoords);
