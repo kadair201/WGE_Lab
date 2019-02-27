@@ -69,7 +69,7 @@ public class VoxelGenerator : MonoBehaviour
         CreatePositiveZFace(x, y, z, uvCoords);
     }
 
-    void CreateNegativeZFace(int x, int y, int z, Vector2 uvCoords)
+    public void CreateNegativeZFace(int x, int y, int z, Vector2 uvCoords)
     {
         vertexList.Add(new Vector3(x, y + 1, z));
         vertexList.Add(new Vector3(x + 1, y + 1, z));
@@ -99,7 +99,7 @@ public class VoxelGenerator : MonoBehaviour
         UVList.Add(new Vector2(uvCoords.x, uvCoords.y));
     }
 
-    void CreatePositiveZFace(int x, int y, int z, Vector2 uvCoords)
+    public void CreatePositiveZFace(int x, int y, int z, Vector2 uvCoords)
     {
         vertexList.Add(new Vector3(x + 1, y, z + 1));
         vertexList.Add(new Vector3(x + 1, y + 1, z + 1));
@@ -109,7 +109,7 @@ public class VoxelGenerator : MonoBehaviour
         AddUVCoords(uvCoords);
     }
 
-    void CreateNegativeXFace(int x, int y, int z, Vector2 uvCoords)
+    public void CreateNegativeXFace(int x, int y, int z, Vector2 uvCoords)
     {
         vertexList.Add(new Vector3(x, y, z + 1));
         vertexList.Add(new Vector3(x, y + 1, z + 1));
@@ -119,7 +119,7 @@ public class VoxelGenerator : MonoBehaviour
         AddUVCoords(uvCoords);
     }
 
-    void CreatePositiveXFace(int x, int y, int z, Vector2 uvCoords)
+    public void CreatePositiveXFace(int x, int y, int z, Vector2 uvCoords)
     {
         vertexList.Add(new Vector3(x + 1, y, z));
         vertexList.Add(new Vector3(x + 1, y + 1, z));
@@ -129,7 +129,7 @@ public class VoxelGenerator : MonoBehaviour
         AddUVCoords(uvCoords);
     }
 
-    void CreateNegativeYFace(int x, int y, int z, Vector2 uvCoords)
+    public void CreateNegativeYFace(int x, int y, int z, Vector2 uvCoords)
     {
         vertexList.Add(new Vector3(x, y, z));
         vertexList.Add(new Vector3(x + 1, y, z));
@@ -139,7 +139,7 @@ public class VoxelGenerator : MonoBehaviour
         AddUVCoords(uvCoords);
     }
 
-    void CreatePositiveYFace(int x, int y, int z, Vector2 uvCoords)
+    public void CreatePositiveYFace(int x, int y, int z, Vector2 uvCoords)
     {
         vertexList.Add(new Vector3(x, y + 1, z + 1));
         vertexList.Add(new Vector3(x + 1, y + 1, z + 1));

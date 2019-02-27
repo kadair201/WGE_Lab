@@ -80,7 +80,38 @@ public class VoxelChunk : MonoBehaviour {
                                 tex = "Grass";
                                 break;
                         }
-                        voxelGenerator.CreateVoxel(x, y, z, tex);
+                        //voxelGenerator.CreateVoxel(x, y, z, tex);
+                        if (x == 0 || terrainArray[x - 1, y, z] == 0)
+                        {
+                            voxelGenerator.CreateNegativeXFace(x, y, z, tex);
+                        }
+                        // check if we need to draw the positive x face
+                        if (x == terrainArray.GetLength(0) - 1 ||
+                        terrainArray[x + 1, y, z] == 0)
+                        {
+                            voxelGenerator.CreatePositiveXFace(x, y, z, tex);
+                        }
+                        // check if we need to draw the negative y face
+                        if (y == 0 || terrainArray[x, y - 1, z] == 0)
+                        {
+                            voxelGenerator.CreateNegativeYFace(x, y, z, tex);
+                        }
+                        // check if we need to draw the positive y face
+                        if (y == terrainArray.GetLength(1) - 1 ||
+                        terrainArray[x, y + 1, z] == 0)
+                        {
+                            voxelGenerator.CreatePositiveYFace(x, y, z, tex);
+                        }
+                        // check if we need to draw the negative z face
+                        if (???)
+                        {
+                            voxelGenerator.CreateNegativeZFace(x, y, z, tex);
+                        }
+                        // check if we need to draw the positive z face
+                        if (???)
+                        {
+                            voxelGenerator.CreatePositiveZFace(x, y, z, tex);
+                        }
                         print("Create " + tex + " block,");
                     }
                 }
